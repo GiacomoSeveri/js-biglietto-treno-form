@@ -15,7 +15,7 @@ const ageField = document.getElementById('age');
 const confirmField = document.getElementById('c-button');
 const resetField = document.getElementById('r-button');
 
-const tiketSField = document.getElementById('tiket');
+const tiketSectionField = document.getElementById('tiket');
 const tiketNameField = document.getElementById('p-name');
 const rateField = document.getElementById('rate');
 const coachField = document.getElementById('coach');
@@ -23,11 +23,11 @@ const pnrField = document.getElementById('pnr');
 const priceField = document.getElementById('price');
 
 // 2
-confirmValue.addEventListener('click', function(){
+confirmField.addEventListener('click', function(){
 
     // 3
     const nameValue = nameField.value;
-    const kmValue = parseInt(kmField.value.trim());
+    const kmValue = kmField.value;
     const ageValue = ageField.value;
 
     if(!nameValue || isNaN(kmValue) || kmValue < 10){
@@ -37,25 +37,25 @@ confirmValue.addEventListener('click', function(){
 
     // 4
     let rateName = 'Biglietto standard'
-    let price = 0.21 * km;
+    let finalPrice = 0.21 * kmField;
 
     // 5
     if(ageValue === 'min'){
-        price *= 0.8;
+        finalPrice *= 0.8;
         rateName = 'Biglietto ridotto minorenni';
-    } else is (ageValue === over){
-        price *= 0.6;
+    } else if (ageValue === 'over') {
+        finalPrice *= 0.6;
         rateName = 'Biglietto ridotto over 65';
     };
 
-    price = price.toFixed(2);
+    finalPrice = finalPrice.toFixed(2);
 
     // 6 
     tiketNameField.innerText = nameValue;
     rateField.innerText = rateName;
     coachField.innerText = '9';
     pnrField.innerText = '220703';
-    priceField.innerText = price;
+    priceField.innerText = finalPrice;
 
-    tiketSField.clssList.remove('d-none');
+    // tiketSectionField.classList.remove('d-none');
 })
